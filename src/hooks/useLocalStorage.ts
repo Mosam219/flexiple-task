@@ -1,16 +1,16 @@
 import { useState } from "react";
 
+/**
+ * can be used multiple places in the app to interact with local storage
+ * @param key
+ * @param defaultValue
+ * @returns
+ */
+
 const useLocalStorage = (key: string, defaultValue: unknown) => {
-  // Create state variable to store
-  // localStorage value in state
   const [localStorageValue, setLocalStorageValue] = useState(() => {
     try {
       const value = localStorage.getItem(key);
-      // If value is already present in
-      // localStorage then return it
-
-      // Else set default value in
-      // localStorage and then return it
       if (value) {
         return JSON.parse(value);
       } else {
@@ -23,7 +23,6 @@ const useLocalStorage = (key: string, defaultValue: unknown) => {
     }
   });
 
-  // this method update our localStorage and our state
   const setLocalStorageStateValue = (valueOrFn: unknown) => {
     let newValue;
     if (typeof valueOrFn === "function") {
@@ -35,7 +34,7 @@ const useLocalStorage = (key: string, defaultValue: unknown) => {
     localStorage.setItem(key, JSON.stringify(newValue));
     setLocalStorageValue(newValue);
   };
-  console.log(localStorageValue);
+
   return { value: localStorageValue, setValue: setLocalStorageStateValue };
 };
 

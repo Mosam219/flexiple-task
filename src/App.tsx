@@ -1,19 +1,12 @@
 import { useState } from "react";
 import SearchSection from "./features/SearchSection";
 import DetailsSection from "./features/DetailsSection";
-import { RWeatherData } from "./services/types/types";
 import useLocalStorage from "./hooks/useLocalStorage";
 import NoDataAvailable from "./components/NoDataAvailable";
 import Loading from "./components/Loading";
 import { Trash2 } from "lucide-react";
 import { Toaster } from "react-hot-toast";
-
-export interface SWeatherData extends Pick<RWeatherData, "name" | "weather"> {
-  temp: number;
-  humidity: number;
-  country: string;
-  pressure: number;
-}
+import { SWeatherData } from "./types";
 
 function App() {
   const [cityDetails, setCityDetails] = useState<SWeatherData>(
@@ -51,8 +44,8 @@ function App() {
         </span>
       </div>
       {localStorage?.length ? (
-        (localStorage as SWeatherData[]).map((weather) => (
-          <DetailsSection details={weather} />
+        (localStorage as SWeatherData[]).map((weather, index) => (
+          <DetailsSection key={index} details={weather} />
         ))
       ) : (
         <NoDataAvailable label="No Data Available" />

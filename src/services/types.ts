@@ -1,3 +1,6 @@
+/**
+ * This contains all response data types which is coming from API
+ */
 export interface RWeatherData {
   coord: {
     lon: number;

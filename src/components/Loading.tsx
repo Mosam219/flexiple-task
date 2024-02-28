@@ -1,6 +1,9 @@
 import { Loader2 } from "lucide-react";
 import ComponentWrapper from "../wrappers/ComponentsWrapper";
 
+/**
+ * Loading component - for showing loading state
+ */
 const Loading = () => {
   return (
     <ComponentWrapper>

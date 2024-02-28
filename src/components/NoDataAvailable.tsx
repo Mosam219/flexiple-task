@@ -1,5 +1,10 @@
 import ComponentWrapper from "../wrappers/ComponentsWrapper";
 
+/**
+ * For no data available
+ * @param param0
+ * @returns
+ */
 const NoDataAvailable: React.FC<{ label: string }> = ({ label }) => {
   return (
     <ComponentWrapper>

@@ -1,4 +1,4 @@
-import { SWeatherData } from "../../App";
+import { SWeatherData } from "../../types";
 import ComponentWrapper from "../../wrappers/ComponentsWrapper";
 import { getIconUrl } from "./constants";
 
@@ -6,6 +6,9 @@ interface Props {
   details: SWeatherData;
 }
 
+/**
+ * Weather Details Section
+ */
 const DetailsSection: React.FC<Props> = ({ details }) => {
   return (
     <ComponentWrapper>
