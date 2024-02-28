@@ -53,7 +53,6 @@ const SearchSection: React.FC<Props> = ({
 
         // resetting value
         cityRef.current!.value = "";
-        cityRef.current!.focus();
 
         // showing notification
         toast.success(`Successfully got weather data for ${city}`, {
