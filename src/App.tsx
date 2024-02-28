@@ -7,6 +7,7 @@ import Loading from "./components/Loading";
 import { Trash2 } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 import { SWeatherData } from "./types";
+import WeatherIcon from "./assets/weather.svg";
 
 function App() {
   const [cityDetails, setCityDetails] = useState<SWeatherData>(
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <section className="mx-auto mt-4 h-fit max-w-screen-md ">
+      <img src={WeatherIcon} className="h-24 m-auto my-4" />
       <SearchSection
         setCityDetails={setCityDetails}
         localStorage={localStorage}
@@ -37,10 +39,12 @@ function App() {
       <div className="flex">
         <span className="text-2xl mx-auto m-3 text-gray-800 underline flex gap-4 items-center">
           History
-          <Trash2
-            className="text-red-500 cursor-pointer"
-            onClick={handleClearHistory}
-          />
+          {localStorage?.length ? (
+            <Trash2
+              className="text-red-500 cursor-pointer"
+              onClick={handleClearHistory}
+            />
+          ) : null}
         </span>
       </div>
       {localStorage?.length ? (
