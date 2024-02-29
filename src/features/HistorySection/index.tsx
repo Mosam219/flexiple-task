@@ -15,7 +15,7 @@ const HistorySection: React.FC<Props> = ({ history, handleClearHistory }) => {
       <div className="flex">
         <span className="text-2xl mx-auto m-3 text-gray-800 underline flex gap-4 items-center">
           History
-          {localStorage?.length ? (
+          {history?.length ? (
             <Trash2
               className="text-red-500 cursor-pointer"
               onClick={handleClearHistory}
