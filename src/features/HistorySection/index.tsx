@@ -29,7 +29,9 @@ const HistorySection: React.FC<Props> = ({ history, handleClearHistory }) => {
           {history.map((weather, index) => (
             <>
               <Details key={index} details={weather} />
-              <hr className="my-4 border-t-4 w-full" />
+              {index !== history.length - 1 ? (
+                <hr className="my-4 border-t-4 w-full" />
+              ) : null}
             </>
           ))}
         </ComponentWrapper>
