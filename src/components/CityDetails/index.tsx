@@ -9,7 +9,7 @@ interface Props {
 /**
  * Weather Details Section
  */
-const DetailsSection: React.FC<Props> = ({ details }) => {
+const Details: React.FC<Props> = ({ details }) => {
   return (
     <ComponentWrapper>
       <div className="flex justify-around items-center flex-wrap gap-5">
@@ -46,4 +46,4 @@ const DetailsSection: React.FC<Props> = ({ details }) => {
     </ComponentWrapper>
   );
 };
-export default DetailsSection;
+export default Details;

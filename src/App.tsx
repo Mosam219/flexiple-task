@@ -1,13 +1,12 @@
 import { useState } from "react";
 import SearchSection from "./features/SearchSection";
-import DetailsSection from "./features/DetailsSection";
+import Details from "./components/CityDetails";
 import useLocalStorage from "./hooks/useLocalStorage";
-import NoDataAvailable from "./components/NoDataAvailable";
 import Loading from "./components/Loading";
-import { Trash2 } from "lucide-react";
 import { Toaster } from "react-hot-toast";
 import { SWeatherData } from "./types";
 import WeatherIcon from "./assets/weather.svg";
+import HistorySection from "./features/HistorySection";
 
 function App() {
   const [cityDetails, setCityDetails] = useState<SWeatherData>(
@@ -26,34 +25,28 @@ function App() {
 
   return (
     <section className="mx-auto mt-4 h-fit max-w-screen-md ">
+      {/* Image seciton */}
       <img src={WeatherIcon} className="h-24 m-auto my-4" />
+
+      {/* user search section  */}
       <SearchSection
         setCityDetails={setCityDetails}
         localStorage={localStorage}
         setLocalStorage={setLocalStorage}
         setIsLoading={setIsLoading}
       />
-      {cityDetails.name ? <DetailsSection details={cityDetails} /> : null}
+
+      {/* current weather details section */}
+      {cityDetails.name ? <Details details={cityDetails} /> : null}
       {isLoading ? <Loading /> : null}
+
       <hr className="mt-10 mb-2 w-[90%] m-auto" />
-      <div className="flex">
-        <span className="text-2xl mx-auto m-3 text-gray-800 underline flex gap-4 items-center">
-          History
-          {localStorage?.length ? (
-            <Trash2
-              className="text-red-500 cursor-pointer"
-              onClick={handleClearHistory}
-            />
-          ) : null}
-        </span>
-      </div>
-      {localStorage?.length ? (
-        (localStorage as SWeatherData[]).map((weather, index) => (
-          <DetailsSection key={index} details={weather} />
-        ))
-      ) : (
-        <NoDataAvailable label="No Data Available" />
-      )}
+
+      {/* History Section */}
+      <HistorySection
+        history={localStorage}
+        handleClearHistory={handleClearHistory}
+      />
       <Toaster />
     </section>
   );
