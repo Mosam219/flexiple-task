@@ -3,6 +3,7 @@ import React from "react";
 import Details from "../../components/CityDetails";
 import { SWeatherData } from "../../types";
 import NoDataAvailable from "../../components/NoDataAvailable";
+import ComponentWrapper from "../../wrappers/ComponentsWrapper";
 
 interface Props {
   history: SWeatherData[];
@@ -24,9 +25,14 @@ const HistorySection: React.FC<Props> = ({ history, handleClearHistory }) => {
         </span>
       </div>
       {history?.length ? (
-        history.map((weather, index) => (
-          <Details key={index} details={weather} />
-        ))
+        <ComponentWrapper>
+          {history.map((weather, index) => (
+            <>
+              <Details key={index} details={weather} />
+              <hr className="my-4 border-t-4 w-full" />
+            </>
+          ))}
+        </ComponentWrapper>
       ) : (
         <NoDataAvailable label="No Data Available" />
       )}

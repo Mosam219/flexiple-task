@@ -1,12 +1,11 @@
 import { useState } from "react";
 import SearchSection from "./features/SearchSection";
-import Details from "./components/CityDetails";
 import useLocalStorage from "./hooks/useLocalStorage";
-import Loading from "./components/Loading";
 import { Toaster } from "react-hot-toast";
 import { SWeatherData } from "./types";
 import WeatherIcon from "./assets/weather.svg";
 import HistorySection from "./features/HistorySection";
+import CurrentCityInfo from "./features/CurrentCityInfo";
 
 function App() {
   const [cityDetails, setCityDetails] = useState<SWeatherData>(
@@ -37,8 +36,9 @@ function App() {
       />
 
       {/* current weather details section */}
-      {cityDetails.name ? <Details details={cityDetails} /> : null}
-      {isLoading ? <Loading /> : null}
+      {cityDetails.name ? (
+        <CurrentCityInfo cityDetails={cityDetails} isLoading={isLoading} />
+      ) : null}
 
       <hr className="mt-10 mb-2 w-[90%] m-auto" />
 
