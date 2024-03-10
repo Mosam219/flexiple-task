@@ -9,6 +9,7 @@ interface Props {
   setCityDetails: React.Dispatch<React.SetStateAction<SWeatherData>>;
   localStorage: SWeatherData[];
   setLocalStorage: React.Dispatch<React.SetStateAction<SWeatherData[]>>;
+  isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -18,6 +19,7 @@ interface Props {
 const SearchSection: React.FC<Props> = ({
   setCityDetails,
   localStorage,
+  isLoading,
   setLocalStorage,
   setIsLoading,
 }) => {
@@ -37,7 +39,7 @@ const SearchSection: React.FC<Props> = ({
     if (!city) {
       // empty string case
       toast.error("Add city name to get weather data!", {
-        duration: 4000,
+        duration: 1000,
         position: "top-right",
       });
       return;
@@ -66,14 +68,14 @@ const SearchSection: React.FC<Props> = ({
 
         // showing notification
         toast.success(`Successfully got weather data for ${city}`, {
-          duration: 4000,
+          duration: 1000,
           position: "top-right",
         });
       })
       .catch((e) => {
         console.log(e);
         toast.error(`City not found`, {
-          duration: 4000,
+          duration: 1000,
           position: "top-right",
         });
       })
@@ -86,7 +88,9 @@ const SearchSection: React.FC<Props> = ({
   return (
     <div className="w-full flex justify-center gap-4 items-center flex-wrap my-10">
       <UserInput ref={cityRef} handleSubmitClick={handleSubmitClick} />
-      <Button onClick={handleSubmitClick}>Submit</Button>
+      <Button onClick={handleSubmitClick} disabled={isLoading}>
+        Submit
+      </Button>
     </div>
   );
 };

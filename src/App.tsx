@@ -32,6 +32,7 @@ function App() {
       <SearchSection
         setCityDetails={setCityDetails}
         localStorage={localStorage}
+        isLoading={isLoading}
         setLocalStorage={setLocalStorage}
         setIsLoading={setIsLoading}
       />
