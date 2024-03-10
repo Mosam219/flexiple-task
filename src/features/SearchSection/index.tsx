@@ -24,6 +24,15 @@ const SearchSection: React.FC<Props> = ({
 }) => {
   const cityRef = useRef<HTMLInputElement>(null);
 
+  const updateLocalStorage = (data: SWeatherData) => {
+    // If item is already present will remove it
+    const filteredLocalStorage = localStorage.filter(
+      (item) => item.name !== data.name
+    );
+    // adding new item to top
+    setLocalStorage([data, ...filteredLocalStorage]);
+  };
+
   const handleSubmitClick = () => {
     const city = cityRef.current?.value;
     if (!city) {
@@ -50,7 +59,8 @@ const SearchSection: React.FC<Props> = ({
           pressure: res.main.pressure,
         };
         setCityDetails(details);
-        setLocalStorage([...localStorage, details]);
+
+        updateLocalStorage(details);
 
         // resetting value
         cityRef.current!.value = "";

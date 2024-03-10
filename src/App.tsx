@@ -6,6 +6,7 @@ import { SWeatherData } from "./types";
 import WeatherIcon from "./assets/weather.svg";
 import HistorySection from "./features/HistorySection";
 import CurrentCityInfo from "./features/CurrentCityInfo";
+import ImageSection from "./features/ImageSection";
 
 function App() {
   const [cityDetails, setCityDetails] = useState<SWeatherData>(
@@ -25,7 +26,8 @@ function App() {
   return (
     <section className="mx-auto mt-4 h-fit max-w-screen-md ">
       {/* Image seciton */}
-      <img src={WeatherIcon} className="h-24 m-auto my-4" />
+      {/* <img src={WeatherIcon} className="h-24 m-auto my-4" /> */}
+      <ImageSection />
 
       {/* user search section  */}
       <SearchSection
