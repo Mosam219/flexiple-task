@@ -1,5 +1,9 @@
+import CardWrapper from "@/wrappers/cardWrapper";
 import { SWeatherData } from "../../types";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { TypographyLarge, TypographyMuted } from "../ui/typography";
 import { getIconUrl } from "./constants";
+import { motion } from "framer-motion";
 
 interface Props {
   details: SWeatherData;
@@ -10,35 +14,35 @@ interface Props {
  */
 const Details: React.FC<Props> = ({ details }) => {
   return (
-    <div className="flex justify-around items-center flex-wrap gap-5">
-      <div className="flex flex-col justify-center items-center">
-        <img
-          src={getIconUrl(details.weather?.[0].icon || "")}
-          alt="weather image"
-          className="w-[120px]"
-        />
-        <span className="text-xl text-center">
-          {details.weather?.[0]?.description || "-"}
-        </span>
-      </div>
-      <div className="flex flex-col justify-center align-middle gap-4">
-        <span className="text-2xl">{details.name || "-"}</span>
-        <span className="text-4xl">
-          {details.temp || "-"}
-          {"\u00b0"} c
-        </span>
-      </div>
-      <div className="flex flex-col justify-center align-middle gap-4">
-        <div className="flex justify-between gap-5 align-middle">
-          <span>Humidity</span>
-          <span>{details.humidity || "-"}</span>
+    <CardWrapper title={details.name || "-"}>
+      <div className="flex justify-around gap-3 flex-wrap">
+        <div className="flex flex-col justify-center items-center">
+          <img
+            src={getIconUrl(details.weather?.[0].icon || "")}
+            alt="weather image"
+          />
+          <span className="text-xl text-center">
+            {details.weather?.[0]?.description || "-"}
+          </span>
         </div>
-        <div className="flex justify-between gap-5 align-middle">
-          <span>Pressure</span>
-          <span>{details.pressure ? details.pressure + " hPa" : "-"}</span>
+        <div className="flex flex-col justify-center">
+          <div className="flex gap-x-3 items-center justify-between">
+            <TypographyLarge text={"Temperature"} />
+            <TypographyMuted text={`${details.temp || "-"}\u00b0 C`} />
+          </div>
+          <div className="flex gap-x-3 items-center justify-between">
+            <TypographyLarge text={"Pressure"} />
+            <TypographyMuted
+              text={details.pressure ? details.pressure + " hPa" : "-"}
+            />
+          </div>
+          <div className="flex gap-x-3 items-center justify-between">
+            <TypographyLarge text={"Humidity"} />
+            <TypographyMuted text={details.humidity || "-"} />
+          </div>
         </div>
       </div>
-    </div>
+    </CardWrapper>
   );
 };
 export default Details;

@@ -11,10 +11,10 @@ interface Props {
 
 const CurrentCityInfo: React.FC<Props> = ({ cityDetails, isLoading }) => {
   return (
-    <ComponentWrapper>
+    <div className="px-10">
       {cityDetails.name ? <Details details={cityDetails} /> : null}
       {isLoading ? <Loading /> : null}
-    </ComponentWrapper>
+    </div>
   );
 };
 

@@ -4,6 +4,7 @@ import { WeatherService } from "../../services";
 import ComponentWrapper from "../../wrappers/ComponentsWrapper";
 import toast from "react-hot-toast";
 import { SWeatherData } from "../../types";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   setCityDetails: React.Dispatch<React.SetStateAction<SWeatherData>>;
@@ -74,17 +75,10 @@ const SearchSection: React.FC<Props> = ({
   };
 
   return (
-    <ComponentWrapper>
-      <div className="w-full flex justify-center gap-4 items-center flex-wrap">
-        <UserInput ref={cityRef} handleSubmitClick={handleSubmitClick} />
-        <button
-          className="text-white h-10 bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          onClick={handleSubmitClick}
-        >
-          Submit
-        </button>
-      </div>
-    </ComponentWrapper>
+    <div className="w-full flex justify-center gap-4 items-center flex-wrap my-10">
+      <UserInput ref={cityRef} handleSubmitClick={handleSubmitClick} />
+      <Button onClick={handleSubmitClick}>Submit</Button>
+    </div>
   );
 };
 

@@ -4,6 +4,13 @@ import Details from "../../components/CityDetails";
 import { SWeatherData } from "../../types";
 import NoDataAvailable from "../../components/NoDataAvailable";
 import ComponentWrapper from "../../wrappers/ComponentsWrapper";
+import { TypographyH1, TypographyH2 } from "@/components/ui/typography";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface Props {
   history: SWeatherData[];
@@ -14,27 +21,31 @@ const HistorySection: React.FC<Props> = ({ history, handleClearHistory }) => {
   return (
     <React.Fragment>
       <div className="flex">
-        <span className="text-2xl mx-auto m-3 text-gray-800 underline flex gap-4 items-center">
-          History
+        <span className="mx-auto m-3 flex gap-4 items-center">
+          <TypographyH2 text={"History"} />
           {history?.length ? (
-            <Trash2
-              className="text-red-500 cursor-pointer"
-              onClick={handleClearHistory}
-            />
+            <TooltipProvider delayDuration={100}>
+              <Tooltip>
+                <TooltipTrigger>
+                  <Trash2
+                    className="text-red-500 cursor-pointer"
+                    onClick={handleClearHistory}
+                  />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Clear History</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
           ) : null}
         </span>
       </div>
       {history?.length ? (
-        <ComponentWrapper>
+        <div className="px-10">
           {history.map((weather, index) => (
-            <>
-              <Details key={index} details={weather} />
-              {index !== history.length - 1 ? (
-                <hr className="my-4 border-t-4 w-full" />
-              ) : null}
-            </>
+            <Details key={index} details={weather} />
           ))}
-        </ComponentWrapper>
+        </div>
       ) : (
         <NoDataAvailable label="No Data Available" />
       )}

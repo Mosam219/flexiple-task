@@ -1,4 +1,6 @@
+import CardWrapper from "@/wrappers/cardWrapper";
 import ComponentWrapper from "../wrappers/ComponentsWrapper";
+import { TypographyLarge, TypographyLead } from "./ui/typography";
 
 /**
  * For no data available
@@ -7,11 +9,11 @@ import ComponentWrapper from "../wrappers/ComponentsWrapper";
  */
 const NoDataAvailable: React.FC<{ label: string }> = ({ label }) => {
   return (
-    <ComponentWrapper>
-      <div className="flex justify-center align-middle h-28">
-        <span className="text-xl text-gray-600">{label}</span>
+    <CardWrapper title="">
+      <div className="flex justify-center items-center h-36">
+        <TypographyLead text="No Data Available" />
       </div>
-    </ComponentWrapper>
+    </CardWrapper>
   );
 };
 export default NoDataAvailable;
