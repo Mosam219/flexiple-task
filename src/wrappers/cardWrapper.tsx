@@ -17,7 +17,9 @@ const CardWrapper = (props: Props) => {
       <Card className="my-3">
         {props.title ? (
           <CardHeader>
-            <CardTitle>{props.title}</CardTitle>
+            <CardTitle className="flex justify-center items-center">
+              {props.title}
+            </CardTitle>
           </CardHeader>
         ) : null}
         <CardContent>{props.children}</CardContent>

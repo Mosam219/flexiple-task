@@ -38,9 +38,7 @@ function App() {
       />
 
       {/* current weather details section */}
-      {cityDetails.name ? (
-        <CurrentCityInfo cityDetails={cityDetails} isLoading={isLoading} />
-      ) : null}
+      <CurrentCityInfo cityDetails={cityDetails} isLoading={isLoading} />
 
       <hr className="mt-10 mb-2 w-[90%] m-auto" />
 
