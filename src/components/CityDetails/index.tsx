@@ -1,9 +1,7 @@
 import CardWrapper from "@/wrappers/cardWrapper";
 import { SWeatherData } from "../../types";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { TypographyLarge, TypographyMuted } from "../ui/typography";
 import { getIconUrl } from "./constants";
-import { motion } from "framer-motion";
 
 interface Props {
   details: SWeatherData;

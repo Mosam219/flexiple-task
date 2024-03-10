@@ -3,8 +3,7 @@ import React from "react";
 import Details from "../../components/CityDetails";
 import { SWeatherData } from "../../types";
 import NoDataAvailable from "../../components/NoDataAvailable";
-import ComponentWrapper from "../../wrappers/ComponentsWrapper";
-import { TypographyH1, TypographyH2 } from "@/components/ui/typography";
+import { TypographyH2 } from "@/components/ui/typography";
 import {
   Tooltip,
   TooltipContent,

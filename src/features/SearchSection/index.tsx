@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import UserInput from "../../components/UserInput";
 import { WeatherService } from "../../services";
-import ComponentWrapper from "../../wrappers/ComponentsWrapper";
 import toast from "react-hot-toast";
 import { SWeatherData } from "../../types";
 import { Button } from "@/components/ui/button";

@@ -2,7 +2,6 @@ import React from "react";
 import { SWeatherData } from "../../types";
 import Details from "../../components/CityDetails";
 import Loading from "../../components/Loading";
-import ComponentWrapper from "../../wrappers/ComponentsWrapper";
 
 interface Props {
   cityDetails: SWeatherData;

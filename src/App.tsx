@@ -3,7 +3,6 @@ import SearchSection from "./features/SearchSection";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { Toaster } from "react-hot-toast";
 import { SWeatherData } from "./types";
-import WeatherIcon from "./assets/weather.svg";
 import HistorySection from "./features/HistorySection";
 import CurrentCityInfo from "./features/CurrentCityInfo";
 import ImageSection from "./features/ImageSection";
